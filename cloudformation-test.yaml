@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  KeyName:
+    Default: "cloudformation-test"
+    Type: "String"
+    Description: "Name of an existing EC2 KeyPair to enable SSH access"
+
+Resources:
+  EC2Instance:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::EC2::Instance"
+    DeletionPolicy: "Retain"
+    Properties:
+      InstanceType: "t3.micro"
+      InstanceInitiatedShutdownBehavior: "stop"
+      SecurityGroupIds:
+      - "sg-0a17053828d1452b0"
+      KeyName: !Ref KeyName
+      ImageId: "ami-083d8a6500c1d55d6"
+
+      Monitoring: false
+      Tags:
+      - Value: "cloudformation-test-2"
+        Key: "Name"
+
+Outputs:
+  InstanceId:
+    Description: InstanceId of the newly created EC2 instance
+    Value: !Ref EC2Instance
