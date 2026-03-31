@@ -21,7 +21,7 @@ Resources:
 
       Monitoring: false
       Tags:
-      - Value: "cloudformation-test-2"
+      - Value: "cloudformation-test-3"
         Key: "Name"
 
 Outputs:
