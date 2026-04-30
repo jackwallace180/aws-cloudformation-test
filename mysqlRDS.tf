@@ -13,18 +13,12 @@ resource "aws_db_instance" "terraformRDS" {
 }
 
 resource "aws_db_parameter_group" "terraformrds" {
-name = "terraformrds"
-family = "mysql8.0"
+  name = "terraformrds"
+  family = "mysql8.0"
 
-parameter {
-name = "character_set_server"
-value = "utf8mb4"
-apply_method = "immediate"
-}
-
-parameter {
-name = "max_connections"
-value = "200"
-apply_method = "pending-reboot"
+  parameter {
+  name = "max_connections"
+  value = "200"
+  apply_method = "pending-reboot"
 }
 }
